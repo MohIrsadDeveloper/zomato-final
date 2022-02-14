@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap');
+
+
+
+.wallpaper {
+    height: 480px;
+    background-image: url('../../public/Images/foodWallpaper.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: 100% 100%;
+}
+
+button {
+    margin-top: 20px;    
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    color: white;
+}
+
+.create {
+    border: 1px solid white;
+}
+
+.w.logo {
+    margin: 2% 40% !important;
+}
+
+.w_logo_text{
+    height: 147px;
+    width: 147px;
+    line-height: 1.5;
+    font-size: 100px !important;
+    color: orange;
+    text-align: center;
+    border-radius: 50%;
+    margin-left: 44%;
+    margin-top: 1%;
+}
+.desc h1 {
+    font-family: "poppins";
+}
+
+.input {
+    margin-left: 15%;
+    margin-top: 30px;
+}
+
+input {
+    padding: 16px;
+    outline: none;
+    border: none;
+    font-family: 'poppins';
+    text-indent: 12px;
+}
+
+#location {
+    width: 30%;
+    margin-right: 1%;
+}
+#restaurant {
+    width: 50%;
+    text-indent: 40px;
+
+}
+
+@media only screen and (max-width:992px) {
+    
+    .logo h1 {
+        min-width: 147px;
+    }
+
+    #location, #restaurant {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .input {
+        margin-left: auto;
+        margin-top: 30px;
+    }
+
+}

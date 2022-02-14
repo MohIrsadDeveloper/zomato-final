@@ -2,10 +2,14 @@ const express = require("express");
 const app = express();
 const mongo = require("mongodb");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const cors = require('cors');
+
 const MongoClient = mongo.MongoClient;
 
 dotenv.config();
-const mongourl = process.env.mongoUrl;
+const PORT = process.env.PORT || 5000;
+const mongourl = "mongodb+srv://test:test123@cluster0.wy6xk.mongodb.net/Zomato?retryWrites=true&w=majority";
 let db;
 
 app.use(express.urlencoded({ extended: true }));
@@ -213,7 +217,6 @@ MongoClient.connect(mongourl, (err, client) => {
     }
 })
 
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Application is running on http://localhost:${PORT}`);
 });

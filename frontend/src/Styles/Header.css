@@ -1,0 +1,29 @@
+.h_row {
+    height: 80px;
+}
+
+.h_logo {
+    margin-top: 10px;
+
+}
+
+.h_span {
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 1px 10px;
+    color: red;
+}
+button {
+    margin-top: 20px;    
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    color: white;
+    cursor: pointer !important;
+}
+
+.create {
+    border: 1px solid white;
+}

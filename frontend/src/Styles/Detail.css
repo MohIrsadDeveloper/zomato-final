@@ -1,0 +1,53 @@
+.z_bg-light {
+    background-color: orange;
+    color: orange;
+}
+.left {
+    height: 400px;
+
+}
+
+.left img {
+    height: 100%;
+    width: 100%;
+}
+
+.right .btn-back,.btn-checkout {
+    padding: 12px 20px;
+}
+
+.links .goto {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.proceed {
+    color: white;
+    text-decoration: none;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    line-height: 3;
+}
+
+.proceed:hover {
+    color: white;
+}
+
+.container-fluid {
+    padding: 0px 50px;
+}
+
+
+.item .top img {
+    height: 80px;
+
+}
+
+.bottom .plus {
+    background-color: green;
+    margin-right: 12px;
+}
+.bottom .minus {
+    background-color: red;
+}
