@@ -27,3 +27,15 @@ button {
 .create {
     border: 1px solid white;
 }
+
+.cart {
+    position: relative;
+    top: 4px;
+}
+
+.cart .cartvalue {
+    position: absolute;
+    right: 14px;
+    top: -6px;
+    font-weight: bold;
+}

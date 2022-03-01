@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import '../Styles/Filter.css'
-import Header from '../Components/Header';
 
 import { Link, NavLink, useParams } from 'react-router-dom';
 
-let locationUrl = "https://zomatourl.herokuapp.com/location";
-let filterurl = "https://zomatourl.herokuapp.com/filter"
+// let locationUrl = "https://zomatourl.herokuapp.com/location";
+// let filterurl = "https://zomatourl.herokuapp.com/filter"
+
+const locationUrl = "http://localhost:4000/location"
+const filterurl = "http://localhost:4000/filter"
 
 
 const Filter = () => {
@@ -115,7 +117,6 @@ const Filter = () => {
 
     return (
         <React.Fragment>
-            <Header />
             <div className="container">
                 <p>params is : { } </p>
                 <h1>Breakfast Places in {locationValue}</h1>

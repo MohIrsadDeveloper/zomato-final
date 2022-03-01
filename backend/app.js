@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 5000;
 const mongourl = "mongodb+srv://test:test123@cluster0.wy6xk.mongodb.net/Zomato?retryWrites=true&w=majority";
 let db;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
 
 
 app.get("/", (req, res) => {
@@ -207,6 +208,23 @@ app.put('/updateOrder/:id', (req, res) => {
     )
 })
 
+app.post('/register', (req,res) => {
+    db.collection("users").insertOne(req.body, (err,result) => {
+        if (err) throw err;
+        res.json(result)
+    })
+})
+
+app.post('/login', (req,res) => {
+    let name = req.body.name 
+    let email = req.body.email
+    console.log(email);
+    
+    db.collection("users").findOne({name : name, email : email}).toArray((err,result) => {
+        if (err) throw err;
+        res.json(result);
+    })
+})
 
 MongoClient.connect(mongourl, (err, client) => {
     if (err) {

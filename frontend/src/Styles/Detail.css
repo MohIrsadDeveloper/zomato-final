@@ -45,9 +45,15 @@
 }
 
 .bottom .plus {
-    background-color: green;
+    background-color: red;
     margin-right: 12px;
 }
+
+.plus:active {
+    background-color: orange;
+    
+}
+
 .bottom .minus {
     background-color: red;
 }

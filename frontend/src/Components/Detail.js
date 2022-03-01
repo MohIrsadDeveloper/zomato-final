@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useDebugValue, useEffect, useState } from 'react'
 import "../Styles/Detail.css"
-import Header from './Header'
 
 import { FaMinus, FaPlus, FaStar } from "react-icons/fa";
-import { Link, NavLink, Outlet, Route, Routes, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 
 import { } from "react-icons/fa";
+import { CartContext } from './CartContext';
 
-let detailUrl = "https://zomatourl.herokuapp.com/details";
-let mealUrl = "https://zomatourl.herokuapp.com/menu";
+// let detailUrl = "https://zomatourl.herokuapp.com/details";
+// let mealUrl = "https://zomatourl.herokuapp.com/menu";
+
+const detailUrl = "http://localhost:4000/details";
+const mealUrl = "http://localhost:4000/menu"
 
 const Detail = () => {
+    const { cart, setCart } = useContext(CartContext)
     const [details, setDetails] = useState([])
     const [menus, setMenus] = useState([])
     let params = useParams();
     let menuId = params.id;
     // console.log(menuId);
+    let navigate = useNavigate();
+
 
     const getDetail = () => {
 
@@ -35,7 +41,7 @@ const Detail = () => {
         fetch(`${mealUrl}/${menuId}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setMenus(data)
             })
             .catch(err => {
@@ -80,29 +86,45 @@ const Detail = () => {
         )
     }
 
-    let addItem = () => {
-        console.log("Add");
+    let checkoutHandle = () => {
+        navigate("/placeorder")
+
     }
 
-    
-    let removeItem = () => {
-        console.log("Less");
+    let addToCart = (event, data) => {
+        event.preventDefault();
+        let _cart = { ...cart }; // { items: {}}
+        if (!_cart.items) {
+            _cart.items = {}
+        }
+        if (_cart.items[data.menu_id]) {
+            _cart.items[data.menu_id] += 1;
+        } else {
+            _cart.items[data.menu_id] = 1;
+        }
+
+        if (!_cart.totalItems) {
+            _cart.totalItems = 0;
+        }
+        _cart.totalItems += 1;
+        setCart(_cart);
     }
+
 
     const Menu = () => {
         return (
             <React.Fragment>
                 <div className="container-fluid">
                     <div className="row">
-                        <h2>Item Added</h2>
-                        <p>Item Number added</p>
+                        <h2>Item Added  </h2>
+                        <p>Item Number  added</p>
                     </div>
 
                     <div className="row item">
                         {
                             menus.map((data, index) => {
                                 return (
-                                    <React.Fragment>
+                                    <React.Fragment key={index}>
 
                                         <div className="col-md-7 top" key={index}>
                                             <b>{data.menu_id}</b> &nbsp;
@@ -114,12 +136,11 @@ const Detail = () => {
                                         </div>
 
                                         <div className="col-md-4 bottom">
-                                            <button className='plus' onClick={addItem}>
-                                                <FaPlus />
+                                            <button className='plus' onClick={(e) => { addToCart(e, data) }}>
+                                                Add to Cart
                                             </button>
-                                            <button className='minus' onClick={removeItem}>
-                                                <FaMinus />
-                                            </button>
+                                            
+
                                         </div>
 
                                     </React.Fragment>
@@ -143,7 +164,6 @@ const Detail = () => {
 
     return (
         <React.Fragment>
-            <Header />
             <div className="container-fluid p-5">
                 {
                     details.map((data, index) => {
@@ -165,8 +185,8 @@ const Detail = () => {
                                     <h4 className="new-price">New Price {data.cost}</h4>
                                     <h3 className="desc">Best Taste of {data.restaurant_name} At your Door or DineIn</h3>
                                     <h1 className='text-success'>Available Now</h1>
-                                    <button className='bg-danger me-3 btn-back'>Back</button>
-                                    <button className='bg-success btn-checkout'>Checkout</button>
+                                    <button className='bg-danger me-3 btn-back' onClick={() => navigate(-1)}>Back</button>
+                                    <button className='bg-success btn-checkout' onClick={checkoutHandle}>Checkout</button>
                                 </div>
 
                             </div>

@@ -4,7 +4,9 @@ import '../../Styles/QuickSearch.css';
 
 import { Link, useParams } from 'react-router-dom';
 
-const mealUrl = "https://zomatourl.herokuapp.com/mealtype"
+// const mealUrl = "https://zomatourl.herokuapp.com/mealtype"
+const mealUrl = "http://localhost:4000/mealtype"
+
 
 const QuickSearch = () => {
 
@@ -15,7 +17,7 @@ const QuickSearch = () => {
         fetch(mealUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setMealtypes(data);
             })
             .catch((err) => {
