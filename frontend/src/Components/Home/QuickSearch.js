@@ -4,8 +4,8 @@ import '../../Styles/QuickSearch.css';
 
 import { Link, useParams } from 'react-router-dom';
 
-// const mealUrl = "https://zomatourl.herokuapp.com/mealtype"
-const mealUrl = "http://localhost:4000/mealtype"
+const mealUrl = "https://zomatourl.herokuapp.com/mealtype"
+// const mealUrl = "http://localhost:4000/mealtype"
 
 
 const QuickSearch = () => {

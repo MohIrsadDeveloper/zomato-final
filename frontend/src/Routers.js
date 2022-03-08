@@ -7,13 +7,13 @@ import NotFound from './Components/NotFound';
 import PlaceOrder from './Components/PlaceOrder';
 import Register from './Components/Login/Register';
 import Login from './Components/Login/Login';
-import Header from './Components/Header';
+// import Header from './Components/Header';
 
 const Routers = () => {
     return (
         <React.Fragment>
             <BrowserRouter>
-            <Header />
+            {/* <Header /> */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="list" element={<Filter />} />

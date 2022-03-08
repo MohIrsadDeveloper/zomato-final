@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "../../Styles/Register.css"
+import swal from 'sweetalert';
+import Header from '../Header';
+
+const registerUrl = "https://zomatourl.herokuapp.com/register"
+// const registerUrl = "http://localhost:4000/register";
+
 
 const Register = () => {
+    const navigate = useNavigate();
     const [users, setUsers] = useState({
         name: "",
         email: "",
@@ -21,30 +29,38 @@ const Register = () => {
     const clickHandle = () => {
         const {name, email, phone, password } = users;
 
-        fetch("http://localhost:4000/register", {
+        fetch(registerUrl, {
             method : "POST",
             headers : { "Content-Type" : "application/json" },
             body : JSON.stringify({
-                name,email,phone,password
+                name,email,password,phone
             })
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            if ("Registration Successfully") {
+                swal({
+                    title: "Good job!",
+                    text: "Registered Successfully",
+                    icon: "success",
+                    button: "Aww yiss!",
+                  });
+            }
+            navigate('/login')
         })
         .catch(err => {
-            console.log(err);
+            throw err;
         })
-
 
     }
 
     return (
         <React.Fragment>
+            <Header />
             <div className="container border p-3">
                 <form>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Name</label>
+                        <label htmlFor="name" className="form-label">Name</label>
                         <input type="text" name='name' className="form-control" id="name" onChange={changeHandle} />
                     </div>
 
@@ -53,11 +69,11 @@ const Register = () => {
                         <input type="email" name='email' className="form-control" id="email" onChange={changeHandle} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Phone</label>
+                        <label htmlFor="phone" className="form-label">Phone</label>
                         <input type="text" name='phone' className="form-control" id="phone" onChange={changeHandle} />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Password</label>
                         <input type="text" name='password' className="form-control" id="password" onChange={changeHandle} />
                     </div>
 

@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import '../../Styles/Wallpaper.css'
 
-const locationUrl = "http://localhost:4000/location";
-const restUrl = "http://localhost:4000/restaurants?state_id="
+const locationUrl = "https://zomatourl.herokuapp.com/location"
+const restUrl = "https://zomatourl.herokuapp.com/restaurants?state_id="
+
+// const locationUrl = "http://localhost:4000/location";
+// const restUrl = "http://localhost:4000/restaurants?state_id="
 
 const Wallpaper = () => {
 

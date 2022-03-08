@@ -4,6 +4,9 @@ const mongo = require("mongodb");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require('cors');
+const router = require("./src/Routes/router");
+const mongoose = require("mongoose")
+
 
 const MongoClient = mongo.MongoClient;
 
@@ -11,11 +14,23 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const mongourl = "mongodb+srv://test:test123@cluster0.wy6xk.mongodb.net/Zomato?retryWrites=true&w=majority";
 let db;
+mongoose.connect(mongourl, {
+    useNewUrlParser : true,
+})
+// const connection = mongoose.connection;
+.then(data => {
+    console.log("Mongoose Connected...");
+})
+.catch(err => {
+    console.log("Connection failed...");
+})
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+
+app.use('/', router)
 
 app.get("/", (req, res) => {
     res.json({

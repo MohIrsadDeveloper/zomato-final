@@ -6,12 +6,13 @@ import { Link, NavLink, Outlet, Route, Routes, useNavigate, useParams } from 're
 
 import { } from "react-icons/fa";
 import { CartContext } from './CartContext';
+import Header from './Header';
 
-// let detailUrl = "https://zomatourl.herokuapp.com/details";
-// let mealUrl = "https://zomatourl.herokuapp.com/menu";
+let detailUrl = "https://zomatourl.herokuapp.com/details";
+let mealUrl = "https://zomatourl.herokuapp.com/menu";
 
-const detailUrl = "http://localhost:4000/details";
-const mealUrl = "http://localhost:4000/menu"
+// const detailUrl = "http://localhost:4000/details";
+// const mealUrl = "http://localhost:4000/menu"
 
 const Detail = () => {
     const { cart, setCart } = useContext(CartContext)
@@ -164,6 +165,7 @@ const Detail = () => {
 
     return (
         <React.Fragment>
+                <Header />
             <div className="container-fluid p-5">
                 {
                     details.map((data, index) => {
